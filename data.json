@@ -1,0 +1,21 @@
+{
+    "1": {
+      "id": "1",
+      "name": "Evacuation Plan 1",
+      "location": "City A",
+      "details": "Evacuation plan details for City A"
+    },
+    "2": {
+      "id": "2",
+      "name": "Evacuation Plan 2",
+      "location": "City B",
+      "details": "Evacuation plan details for City B"
+    },
+    "3": {
+      "id": "3",
+      "name": "Evacuation Plan 3",
+      "location": "City C",
+      "details": "Evacuation plan details for City C"
+    }
+  }
+  
