@@ -4,8 +4,16 @@ const {router}= require("./router");
 
 const server = http.createServer((req, res) => {
 if (req.method==="POST" || req.method==="PUT"){
+    let data = "";
+    req.on("data", (chunk) => {
+        data += chunk;
+    });
+    req.on("end", () => {
+        req.body = JSON.parse(data);
+        router(req,res);
+    });
 } else{
-    Router(req,res);
+    router(req,res);
 }
 });
 
