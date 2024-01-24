@@ -14,8 +14,7 @@ const getPlan = (id) => {
 
 //createPlan
 const postPlan = (newPlan) => {
-  const newId = (Object.keys(data).length + 1).toString(); // Generate a new ID
-  // newPlan.id = newId;
+  const newId = (Object.keys(data).length + 1).toString(); 
   data[newId] = newPlan;
   return newPlan;
 };
@@ -28,15 +27,15 @@ const putPlan = (id, updatedPlan) => {
   }
 };
 
-
 //deletePlan
 const deletePlan = (id) => {
-  const index = data.findIndex((plan) => plan.id === id);
-  if (index !== -1) {
-    const deletedPlan = data.splice(index, 1);
-    return deletedPlan[0];
+  if (data[id]) {
+    const deletedPlan = data[id];
+    delete data[id];
+    return deletedPlan;
   }
 };
+
 module.exports = {
   getPlans,
   getPlan,
