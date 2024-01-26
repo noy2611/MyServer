@@ -30,5 +30,5 @@ To start the server, run the following command:
 
 node index.js
 
-- Fullstack Course First Assignment
-This server project serves as the first assignment in the fullstack course. It is a foundational piece for understanding HTTP server development and CRUD operations.
+## Fullstack Course First Assignment
+- This server project serves as the first assignment in the fullstack course. It is a foundational piece for understanding HTTP server development and CRUD operations.
