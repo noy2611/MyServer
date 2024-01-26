@@ -1,8 +1,8 @@
 // Description: This file contains the repository for the plans.
 const data = require("./data");
-const fs = require('fs');//file system module
-const path = require('path');//path module
-const dataPath = path.join(__dirname, './data.json');//data.json path
+const fs = require("fs"); //file system module
+const path = require("path"); //path module
+const dataPath = path.join(__dirname, "./data.json"); //data.json path
 
 let dataP = require(dataPath);
 
@@ -19,38 +19,65 @@ const writeDataToFile = (operationType) => {
 
 //getAllPlans
 const getPlans = () => {
-  return data;
+  try {
+    return data;
+  } catch (error) {
+    console.error("Error getting data from file:", error);
+    return {};
+  }
+  // return data;
 };
 //getPlanById
 const getPlan = (id) => {
-  let stringId = id.toString();
-  return data[stringId]; 
+  try {
+    let stringId = id.toString();
+    return data[stringId];
+  } catch (error) {
+    console.error("Error getting data from file:", error);
+    return {};
+  }
 };
 
 //createPlan
 const postPlan = (newPlan) => {
-  const newId = (Object.keys(data).length + 1).toString();
-  data[newId] = newPlan;
-  writeDataToFile('create');
-  return newPlan;
+  try {
+    const newId = (Object.keys(data).length + 1).toString();
+    data[newId] = newPlan;
+    writeDataToFile("create");
+    return newPlan;
+  } catch (error) {
+    console.error("Error getting data from file:", error);
+    return {};
+  }
+
 };
 
 //updatePlan
 const putPlan = (id, updatedPlan) => {
   if (data[id]) {
-    data[id] = { ...data[id], ...updatedPlan };
-    writeDataToFile('update');
-    return data[id];
+    try {
+      data[id] = { ...data[id], ...updatedPlan };
+      writeDataToFile("update");
+      return data[id];
+    } catch (error) {
+      console.error("Error getting data from file:", error);
+      return {};
+    }
   }
 };
 
 //deletePlan
 const deletePlan = (id) => {
   if (data[id]) {
-    const deletedPlan = data[id];
-    delete data[id];
-    writeDataToFile('delete');
-    return deletedPlan;
+    try{
+      const deletedPlan = data[id];
+      delete data[id];
+      writeDataToFile("delete");
+      return deletedPlan;
+    }catch(error){
+      console.error("Error getting data from file:", error);
+      return {};
+    }
   }
 };
 
